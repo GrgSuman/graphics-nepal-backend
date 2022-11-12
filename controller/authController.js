@@ -31,6 +31,7 @@ const createToken = (id)=>{
 }
 
 
+<<<<<<< HEAD
 module.exports.login=async (req,res)=>{
     const{email,password} = req.body;
 
@@ -47,12 +48,19 @@ module.exports.login=async (req,res)=>{
         return res.status(400).json({err:err.message})
     }
    
+=======
+module.exports.login=(req,res)=>{
+    const{email,password} = req.body;
+    console.log(`email: ${email} password: ${password}`)
+    res.json({"name":"Login"})
+>>>>>>> 58edde5cf0694d9f952948815776383bc846b438
 }
 
 module.exports.signup= async (req,res)=>{
     const{email,password,fullName,location,workAs} = req.body;
 
     try{
+<<<<<<< HEAD
     const user = await User.create({name:fullName,email,password,location,role:workAs})
     // const token = createToken(user._id)
     // res.cookie('jwt',token,{httpOnly:true,maxAge:maxAge*1000})
@@ -68,4 +76,21 @@ module.exports.signup= async (req,res)=>{
 module.exports.logout = (req,res)=>{
     res.cookie("jwt","",{maxAge:1})
     res.status(201).json("Logged out successfully")
+=======
+
+    const user = await User.create({name:fullName,email,password,location,role:workAs})
+    const token = createToken(user._id)
+    res.cookie('jwt',token,{httpOnly:true,maxAge:maxAge*1000})
+    res.status(201).json(user._id)
+
+
+    }
+    catch(err){
+
+        const errors = handleError(err)
+        res.status(400).json(errors)
+
+    }
+
+>>>>>>> 58edde5cf0694d9f952948815776383bc846b438
 }

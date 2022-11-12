@@ -2,10 +2,13 @@ const mongoose = require("mongoose")
 const validator = require("validator")
 const bcrtpt = require("bcrypt")
 
+<<<<<<< HEAD
 
 
 
 
+=======
+>>>>>>> 58edde5cf0694d9f952948815776383bc846b438
 const userSchema = mongoose.Schema({
     name:{
         type:String,
@@ -32,6 +35,7 @@ const userSchema = mongoose.Schema({
         type:String,
         required:[true,"Please select one role option"],
     },
+<<<<<<< HEAD
 
     workTitle:{
         type:String,
@@ -59,6 +63,11 @@ const userSchema = mongoose.Schema({
 })
 
 
+=======
+})
+
+//mongoose hook, pre,post(before and after saving data )
+>>>>>>> 58edde5cf0694d9f952948815776383bc846b438
 //hashing password
 userSchema.pre("save",async function(next){
 
@@ -69,6 +78,7 @@ userSchema.pre("save",async function(next){
 })
 
 
+<<<<<<< HEAD
 //static method
 
 userSchema.statics.login = async function (email,password){
@@ -88,6 +98,8 @@ userSchema.statics.login = async function (email,password){
 }
 
 
+=======
+>>>>>>> 58edde5cf0694d9f952948815776383bc846b438
 const User = mongoose.model("user",userSchema);
 
 
